@@ -1,2 +1,3 @@
 # snippets
-back-end module to manages HTML modules 
+
+Snippets is a back-end module to manage HTML modules.
