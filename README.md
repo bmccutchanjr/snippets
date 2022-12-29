@@ -14,4 +14,12 @@ Snippets is intended to merge two or more files each containing bits and pieces 
 
 I wrote snippets to use with HTML files, but it ought to work with other kinds of files as well.
 
+There are three components to snippets.
 
+One or more files of HTML code to be merged.
+
+A <snippet> tag must be added to one or more files.  The <snippet> tag identifies the file name of the module to import.
+
+Your server (actually your server's routes) must execute the snippets() function.  Because no complete HTML file exists for your routes to serve, the routes must use .write() to serve the HTML to the client.
+
+Althernatively, you can use snippets to build finalized HTML files.  In this case, your server <u>will</u> be returning a file to the client and doesn't need to call snippets().  It doesn't need to require the snippets module, either.
