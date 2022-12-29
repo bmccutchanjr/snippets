@@ -122,3 +122,18 @@ function snippet (source, build = false, trim = false)
 }
 
 module.exports = snippet;
+
+//	All it needs now is some code to allow snippets to run from the command line.  Check for arguments passed through
+//	the process onject and call snippets()...
+
+if (process.argv.length > 2)
+{	//	If process.argv has no more than one or two elements, this is probably not being called from the command line.
+
+	const file = process.argv[2];
+	const build = process.argv[3] ? process.argv[3] : null;
+	const trim = process.argv[4] ? process.argv[4] : false;
+
+	snippet (file, build, trim)
+	.then (_ => console.log ("Success!"))
+	.catch (error => console.log (error));
+}

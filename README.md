@@ -42,8 +42,18 @@ The `file` property is required and it's value is the name of the file you want 
 
 - Only the `file name` is required.  It's a string value indicating the name of the file that other snippets will be merged into.
 
-- If `build` is specified, `snippets()` will return `true` on success, or a JavaScript Error object.  `build` is the name of an output file that your final merged result will be written to.  It is a string.
+- If `build` is specified, `snippets()` will return `true` on success, or a JavaScript Error object.  `build` is the name of an output file that your final merged result will be written to.  It's a string.
 
 - `trim` indicates whether the final output should be trimmed by removing `carriage returns`, `line feeds` and leading `tabs` and `spaces`.  The result isn't very pretty, but it's a but smaller, and your web browser will ignore those characters anyway.
 
 `snippets()` returns a Promise.
+
+### Running Snippets from the command line
+
+When you're using Snippets to build finalized static files, you can invoke it from the command line.
+
+>`node snippet.js "file name" "build name" true`
+
+In this mode, Snippets returns nothing.  A message is logged to the console indicating whether the operation was successful.
+
+In all other respects, Snippets works as described above.
