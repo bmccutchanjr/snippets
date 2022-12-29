@@ -61,7 +61,7 @@ function processTheSnippet (code)
 
 function snippet (source, build = false, trim = false)
 {	//	This is the entry point for the module.  It's purpose is to open the base file and pass the contents of the
-	//	file to xxx for processing.  If build and trim are specified, that happens here also.
+	//	file to processTheSnippet() for processing.  If build and trim are specified, that happens here also.
 
 	return new Promise ((resolve, reject) =>
 	{	//	File I/O is an asynchronous process.  snippets returns a Promise...
