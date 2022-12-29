@@ -26,7 +26,7 @@ Alternatively, you can use snippets to build finalized HTML files.  In this case
 
 >`snippet ("test module.snip");`
 
-## The Snippet Tag
+### The Snippet Tag
 
 Somewhere in your source file, you will need to include a `<snippet>` tag.  It looks just like an HTML tag but that's not a problem.  The `<snippet>` tag will be replaced when you execute `snippet()`.
 
@@ -36,7 +36,7 @@ If there's an error in your code and the `<snippet>` tag is not replaced, it wil
 
 The `file` property is required and it's value is the name of the file you want to import.  The file extention is unimportant.
 
-## The Snippets Function Call
+### The Snippets Function Call
 
 >`snippet (file name, build, trim);`
 
