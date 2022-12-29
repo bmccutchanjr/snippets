@@ -63,7 +63,11 @@ function trimCode (code)
 {	//	Remove any leading or trailing whitespace from each line of the code.
 
 	//	Some text editors use a combination of line-feed and carriage-return to indicate a new line, and others only
-	//	use a carriage return.
+	//	use a carriage return.  Let's make life easier by replacing carriage-return and line-feed combinations with
+	//	just a line-feed.  They could be in either order...
+
+	code = code.replaceAll ("\n\r", "\n");
+	code = code.replaceAll ("\r\n", "\n");
 
 	//	A list of strings to remove...
 
@@ -78,11 +82,7 @@ function trimCode (code)
 		}
 	}
 
-//		return code.replaceAll ("\n", "");
-	return code.replace (/[\n\r]+/g, "");
-
-	//	Someone explain to me why the commented code totally trashes the file but the replace() using regular
-	//	expressions works.  What's the difference.
+	return code.replaceAll ("\n", "");
 }
 
 function snippet (source, build = false, trim = false)
