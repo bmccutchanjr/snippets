@@ -59,6 +59,32 @@ function processTheSnippet (code)
 	})
 }
 
+function trimCode (code)
+{	//	Remove any leading or trailing whitespace from each line of the code.
+
+	//	Some text editors use a combination of line-feed and carriage-return to indicate a new line, and others only
+	//	use a carriage return.
+
+	//	A list of strings to remove...
+
+	const strings = [ "\n\t\t\t\t", "\n\t\t\t", "\n\t\t", "\n\t", "\n            ", "\n        ", "\n    ", "\n ", "\t\n", " \n" ];
+
+	for (let i=0; i<strings.length; i++)
+	{	let pos = code.indexOf (strings[i]);
+		while (pos > 0)
+		{
+			code = code.replaceAll (strings[i], "\n");
+			pos = code.indexOf (strings[i]);
+		}
+	}
+
+//		return code.replaceAll ("\n", "");
+	return code.replace (/[\n\r]+/g, "");
+
+	//	Someone explain to me why the commented code totally trashes the file but the replace() using regular
+	//	expressions works.  What's the difference.
+}
+
 function snippet (source, build = false, trim = false)
 {	//	This is the entry point for the module.  It's purpose is to open the base file and pass the contents of the
 	//	file to processTheSnippet() for processing.  If build and trim are specified, that happens here also.
@@ -73,6 +99,8 @@ function snippet (source, build = false, trim = false)
 				processTheSnippet (buffer.toString())
 				.then (data =>
 				{	//	If build or trim are specified, this is where it has to happen.  Until that gets written...
+
+					if (trim) data = trimCode (data);
 
 					resolve (data);
 				})
