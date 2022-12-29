@@ -102,6 +102,16 @@ function snippet (source, build = false, trim = false)
 
 					if (trim) data = trimCode (data);
 
+				if (build)
+				{	//	If build is specified, the merged HTML is to be written to a file.  The function will return
+					//	either an error or a boolean true (indicating success), but not the merged HTML.
+
+					fs.writeFile (build, data, error =>
+					{	if (error) reject (error)
+						else resolve (true);
+					});
+				}
+				else
 					resolve (data);
 				})
 				.catch (error => resolve (error));
