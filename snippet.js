@@ -22,21 +22,22 @@ function processTheSnippet (code)
 
 			const snipEnd = compare.indexOf (">", snipStart);
 
-			//	The <snippet> tag should specify a file name containing the code to import.  Extract the name from the tag
+			//	The <snippet> tag should specify a file name containing the code to import.  Extract the name from the
+			//	tag
 
 			let nameStart = compare.indexOf ("FILE=", snipStart);
 			if (nameStart > snipEnd)
-			{	//	A file specification was not found within the <snippet> tag, or it is improperly terminated.  Either
-				//	snippets can do nothing with it.
-				reject ("Bad <snippet>");
+			{	//	A file specification was not found within the <snippet> tag, or it's improperly terminated.  Either
+				//	way snippets can do nothing with it.
+				reject (new Error ("Bad <snippet>"));
 			}
 
 			//	Extract everything in the source file from the nameStart to the end of the <snippet> tag
 
 			let fileName = compare.substring (nameStart + 5, snipEnd);
 
-			//	but we can't use it just yet.  The <snippet> tag may have bee written with quotation marks, leading spaces
-			//	or trailing spaces.  Remove them...
+			//	but we can't use it just yet.  The <snippet> tag may have been written with quotation marks, leading or
+			//	trailing spaces.  Remove them...
 
 			fileName = fileName.replaceAll ("\'", "");
 			fileName = fileName.replaceAll ("\"", "");
@@ -45,8 +46,8 @@ function processTheSnippet (code)
 			fs.readFile (fileName, function (error, data)
 			{	if (error) reject (error)
 				else
-				{	//	Replace all occurences of the <snippet> tag in the string code (NOT the comparison string that was
-					//	converted to upper case).
+				{	//	Replace all occurences of the <snippet> tag in the string code (NOT the comparison string that
+					//	we've been using).
 
 					code = code.replaceAll (code.substring (snipStart, (snipEnd + 1)), data.toString());
 

@@ -42,7 +42,7 @@ The `file` property is required and it's value is the name of the file you want 
 
 - Only the `file name` is required.  It's a string value indicating the name of the file that other snippets will be merged into.
 
-- If `build` is specified, `snippets()` will return a true/false value indicating the success of the operation.  `build` is the name of an output file that your final merged result will be written to.  It is a string.
+- If `build` is specified, `snippets()` will return `true` on success, or a JavaScript Error object.  `build` is the name of an output file that your final merged result will be written to.  It is a string.
 
 - `trim` indicates whether the final output should be trimmed by removing `carriage returns`, `line feeds` and leading `tabs` and `spaces`.  The result isn't very pretty, but it's a but smaller, and your web browser will ignore those characters anyway.
 
