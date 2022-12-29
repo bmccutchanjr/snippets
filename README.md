@@ -12,6 +12,6 @@ Snippets is an NPM module intended for a NodeJS environment.  Install it just li
 
 Snippets is intended to merge two or more files each containing bits and pieces of HTML code into a single and complete file.  Snippets can be run when a client requests a page or it can be used to build static files that are served normally.  The former might be used during development and the latter on a production server.  But the choice is yours.
 
-Snippets is intended to be used with HTML files, but it should work with any kind of text file.
+I wrote snippets to use with HTML files, but it ought to work with other kinds of files as well.
 
 
